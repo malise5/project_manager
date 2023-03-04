@@ -1,4 +1,8 @@
 export default function Header({ changeTheme, theme }) {
+  const toggle = () => {
+    changeTheme();
+  };
+
   return (
     <div className="header">
       <h1>
@@ -6,9 +10,7 @@ export default function Header({ changeTheme, theme }) {
         Projects Showcase
       </h1>
       <nav>
-        <button onClick={changeTheme}>
-          {theme ? "LightMode" : "DarkMode"}
-        </button>
+        <button onClick={toggle}>{theme ? "LightMode" : "DarkMode"}</button>
       </nav>
     </div>
   );
