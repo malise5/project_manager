@@ -1,12 +1,12 @@
 import { useState } from "react";
 import ProjectCard from "./ProjectCard";
-import projects from "./projects";
+// import projects from "./projects";
 
-export default function ProjectList() {
+export default function ProjectList({ projects, loadProjects }) {
   const [search, setSearch] = useState("");
 
   const handleClick = () => {
-    console.log();
+    loadProjects();
   };
 
   const hanleChange = (e) => {
