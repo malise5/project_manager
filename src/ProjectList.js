@@ -5,6 +5,10 @@ import projects from "./projects";
 export default function ProjectList() {
   const [search, setSearch] = useState("");
 
+  const handleClick = () => {
+    console.log();
+  };
+
   const hanleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -22,6 +26,7 @@ export default function ProjectList() {
 
   return (
     <section>
+      <button onClick={handleClick}>Load Projects</button>
       <h1> All Project</h1>
       <div className="filters">
         <button>All</button>
