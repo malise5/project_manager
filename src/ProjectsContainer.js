@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import ProjectList from "./ProjectList";
-import ProjectNewForm from "./ProjectNewForm";
+import ProjectForm from "./ProjectForm";
 
 const ProjectsContainer = () => {
   const [projects, setProjects] = useState([]);
@@ -14,9 +14,13 @@ const ProjectsContainer = () => {
       });
   };
 
+  const onAddProject = (formdata) => {
+    setProjects((projects) => [formdata, ...projects]);
+  };
+
   return (
     <div>
-      <ProjectNewForm />
+      <ProjectForm onAddProject={onAddProject} />
       <ProjectList projects={projects} loadProjects={loadProjects} />
     </div>
   );
