@@ -14,7 +14,18 @@ function ProjectForm({ onAddProject }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddProject(formData);
+    fetch("http://localhost:3001/projects", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        onAddProject(data);
+      });
     setFormData(initilaState);
   };
 
@@ -30,7 +41,7 @@ function ProjectForm({ onAddProject }) {
       <form className="form" autoComplete="off" onSubmit={handleSubmit}>
         <h3>Add New Project</h3>
 
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Author Name</label>
         <input
           type="text"
           id="name"
@@ -39,7 +50,7 @@ function ProjectForm({ onAddProject }) {
           onChange={handleChange}
         />
 
-        <label htmlFor="about">About</label>
+        <label htmlFor="about">About Project</label>
         <textarea
           id="about"
           name="about"
@@ -62,7 +73,7 @@ function ProjectForm({ onAddProject }) {
           <option value="5">Phase 5</option>
         </select>
 
-        <label htmlFor="link">Project Homepage</label>
+        <label htmlFor="link">Project Homepage Link</label>
         <input
           type="text"
           id="link"
