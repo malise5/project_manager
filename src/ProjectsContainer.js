@@ -5,17 +5,19 @@ import ProjectForm from "./ProjectForm";
 
 const ProjectsContainer = () => {
   const [projects, setProjects] = useState([]);
+  const [selectedPhase, setSelectedPhase] = useState("");
 
   useEffect(() => {
-    const loadProjects = () => {
-      fetch("http://localhost:3001/projects")
-        .then((response) => response.json())
-        .then((data) => {
-          setProjects(data);
-        });
-    };
-    loadProjects();
-  });
+    let url = "http://localhost:3001/projects";
+    if (selectedPhase) {
+      url += "?phase=" + selectedPhase;
+    }
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setProjects(data);
+      });
+  }, [selectedPhase]);
 
   const onAddProject = (formdata) => {
     setProjects((projects) => [formdata, ...projects]);
@@ -24,7 +26,7 @@ const ProjectsContainer = () => {
   return (
     <div>
       <ProjectForm onAddProject={onAddProject} />
-      <ProjectList projects={projects} />
+      <ProjectList projects={projects} setSelectedPhase={setSelectedPhase} />
     </div>
   );
 };
