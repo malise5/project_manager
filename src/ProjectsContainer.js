@@ -6,6 +6,7 @@ import ProjectForm from "./ProjectForm";
 const ProjectsContainer = () => {
   const [projects, setProjects] = useState([]);
   const [selectedPhase, setSelectedPhase] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     let url = "http://localhost:3001/projects";
@@ -26,7 +27,12 @@ const ProjectsContainer = () => {
   return (
     <div>
       <ProjectForm onAddProject={onAddProject} />
-      <ProjectList projects={projects} setSelectedPhase={setSelectedPhase} />
+      <ProjectList
+        projects={projects}
+        setSelectedPhase={setSelectedPhase}
+        search={search}
+        setSearch={setSearch}
+      />
     </div>
   );
 };
