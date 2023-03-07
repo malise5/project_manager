@@ -7,7 +7,7 @@ export default function Header({ changeTheme, theme }) {
     <div className="header">
       <h1>
         <span className="logo">{"//"}</span>
-        Projects Showcase
+        Northern <span className="logo">Box</span>
       </h1>
       <nav>
         <button onClick={toggle}>{theme ? "LightMode" : "DarkMode"}</button>
