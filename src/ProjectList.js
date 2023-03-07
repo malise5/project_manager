@@ -1,10 +1,11 @@
-import { useState } from "react";
 import ProjectCard from "./ProjectCard";
-// import projects from "./projects";
 
-export default function ProjectList({ projects, setSelectedPhase }) {
-  const [search, setSearch] = useState("");
-
+export default function ProjectList({
+  projects,
+  setSelectedPhase,
+  search,
+  setSearch,
+}) {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
