@@ -2,10 +2,10 @@ import { useState } from "react";
 import ProjectCard from "./ProjectCard";
 // import projects from "./projects";
 
-export default function ProjectList({ projects }) {
+export default function ProjectList({ projects, setSelectedPhase }) {
   const [search, setSearch] = useState("");
 
-  const hanleChange = (e) => {
+  const handleChange = (e) => {
     setSearch(e.target.value);
   };
 
@@ -24,25 +24,25 @@ export default function ProjectList({ projects }) {
     <section>
       <h1> All Project </h1>
       <div className="filters">
-        <button>All</button>
-        <button>
-          Phase1 <br></br>
+        <button onClick={() => setSelectedPhase("")}>All</button>
+        <button onClick={() => setSelectedPhase("1")}>
+          Phase 1 <br></br>
           {"(html/css) "}
         </button>
-        <button>
-          Phase2 <br></br>
+        <button onClick={() => setSelectedPhase("2")}>
+          Phase 2 <br></br>
           {"(JavaScript) "}
         </button>
-        <button>
-          Phase3 <br></br>
+        <button onClick={() => setSelectedPhase("3")}>
+          Phase 3 <br></br>
           {"(FrontEnd) "}
         </button>
-        <button>
-          Phase4 <br></br>
+        <button onClick={() => setSelectedPhase("4")}>
+          Phase 4 <br></br>
           {"(BackEnd) "}
         </button>
-        <button>
-          Phase5 <br></br>
+        <button onClick={() => setSelectedPhase("5")}>
+          Phase 5 <br></br>
           {"(FullStack) "}
         </button>
       </div>
@@ -50,7 +50,7 @@ export default function ProjectList({ projects }) {
         type="text"
         value={search}
         placeholder="Search..."
-        onChange={hanleChange}
+        onChange={handleChange}
       />
       <ul className="cards">{renderProjects}</ul>
     </section>
