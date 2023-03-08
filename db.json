@@ -79,14 +79,6 @@
       "phase": 4,
       "link": "https://www.locksleyr.com",
       "image": "https://helpdesk.bitrix24.com/upload/medialibrary/fa8/lx314x81vqdgdjdlfk7j5fh8xejwfgh2/knowledge_base.jpg"
-    },
-    {
-      "id": 25,
-      "name": "GamesRx",
-      "about": "Game info and reviews",
-      "phase": 4,
-      "link": "https://gamesrx.netlify.app",
-      "image": "https://kinsta.com/wp-content/uploads/2019/07/export-affinity-designer-1.png"
     }
   ]
 }
