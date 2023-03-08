@@ -1,24 +1,45 @@
 import ProjectCard from "./ProjectCard";
+import { useState, useEffect } from "react";
 
 export default function ProjectList({
   projects,
   setSelectedPhase,
   search,
   setSearch,
+  onEditProject,
+  onDeleteProject,
 }) {
+  const [searchInputText, setSearchInputText] = useState("");
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setSearch(searchInputText);
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchInputText, setSearch]);
+
   const handleChange = (e) => {
-    setSearch(e.target.value);
+    setSearchInputText(e.target.value);
   };
 
-  const searchQuery = projects.filter((project) => {
-    return (
-      project.name.toLowerCase().includes(search.toLowerCase()) ||
-      project.about.toLowerCase().includes(search.toLowerCase())
-    );
-  });
+  // const searchQuery = projects.filter((project) => {
+  //   return (
+  //     project.name.toLowerCase().includes(search.toLowerCase()) ||
+  //     project.about.toLowerCase().includes(search.toLowerCase())
+  //   );
+  // });
 
-  const renderProjects = searchQuery.map((project) => {
-    return <ProjectCard key={project.id} project={project} />;
+  const renderProjects = projects.map((project) => {
+    return (
+      <ProjectCard
+        key={project.id}
+        project={project}
+        onEditProject={onEditProject}
+        onDeleteProject={onDeleteProject}
+      />
+    );
   });
 
   return (
@@ -49,7 +70,7 @@ export default function ProjectList({
       </div>
       <input
         type="text"
-        value={search}
+        value={searchInputText}
         placeholder="Search..."
         onChange={handleChange}
       />
