@@ -5,11 +5,23 @@ export default function ProjectCard({
   project,
   onEditProject,
   onDeleteProject,
+  onUpdateProject,
 }) {
   // const {id, name, about, phase, link, image} = project
   // console.log(project);
-  const [clapCount, setClapCount] = useState(0);
-  const handleClap = () => setClapCount((clapCount) => clapCount + 1);
+
+  const handleClap = () => {
+    const newClapCount = project.claps + 1;
+    fetch(`http://localhost:3001/projects/${project.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ claps: newClapCount }),
+    })
+      .then((res) => res.json())
+      .then(onUpdateProject);
+  };
 
   const handleEditClick = () => {
     onEditProject(project);
@@ -39,7 +51,7 @@ export default function ProjectCard({
       <figure className="image">
         <img src={project.image} alt={project.name} />
         <button onClick={handleClap} className="claps">
-          👏{clapCount}
+          👏{project.claps}
         </button>
       </figure>
       <section className="details">

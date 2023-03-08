@@ -73,6 +73,7 @@ const ProjectsContainer = () => {
         projects={projects}
         setSelectedPhase={setSelectedPhase}
         onEditProject={onEditProject}
+        onUpdateProject={onUpdateProject}
         onDeleteProject={onDeleteProject}
         search={search}
         setSearch={setSearch}

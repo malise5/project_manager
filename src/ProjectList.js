@@ -8,6 +8,7 @@ export default function ProjectList({
   setSearch,
   onEditProject,
   onDeleteProject,
+  onUpdateProject,
 }) {
   const [searchInputText, setSearchInputText] = useState("");
 
@@ -37,6 +38,7 @@ export default function ProjectList({
         key={project.id}
         project={project}
         onEditProject={onEditProject}
+        onUpdateProject={onUpdateProject}
         onDeleteProject={onDeleteProject}
       />
     );
