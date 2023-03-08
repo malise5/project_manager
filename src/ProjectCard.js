@@ -1,5 +1,4 @@
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import { useState } from "react";
 
 export default function ProjectCard({
   project,
