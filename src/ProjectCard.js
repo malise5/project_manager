@@ -15,7 +15,23 @@ export default function ProjectCard({
     onEditProject(project);
   };
   const handleDeleteClick = () => {
+    //optimistic Delete
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      fetch(`http://localhost:3001/projects/${project.id}`, {
+        method: "DELETE",
+      });
+    }
     onDeleteProject(project.id);
+    //pessimistic Delete
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      fetch(`http://localhost:3001/projects/${project.id}`, {
+        method: "DELETE",
+      }).then((res) => {
+        if (res.ok) {
+          onDeleteProject(project.id);
+        }
+      });
+    }
   };
 
   return (
