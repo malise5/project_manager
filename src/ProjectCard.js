@@ -1,8 +1,8 @@
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function ProjectCard({
   project,
-  onEditProject,
   onDeleteProject,
   onUpdateProject,
 }) {
@@ -22,9 +22,6 @@ export default function ProjectCard({
       .then(onUpdateProject);
   };
 
-  const handleEditClick = () => {
-    onEditProject(project);
-  };
   const handleDeleteClick = () => {
     //optimistic Delete
     // if (window.confirm("Are you sure you want to delete this project?")) {
@@ -63,9 +60,9 @@ export default function ProjectCard({
       <footer className="extra">
         <span className="badge blue"> {`Phase ${project.phase}`} </span>
         <div className="manage">
-          <button onClick={handleEditClick}>
+          <Link to={`/projects/${project.id}/edit`} className="button">
             <FaPencilAlt />
-          </button>
+          </Link>
           <button onClick={handleDeleteClick}>
             <FaTrash />
           </button>

@@ -1,17 +1,31 @@
-export default function Header({ changeTheme, theme }) {
-  const toggle = () => {
-    changeTheme();
-  };
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
+export default function Header() {
   return (
-    <div className="header">
-      <h1>
-        <span className="logo">{"//"}</span>
-        Northern <span className="logo">Box</span>
+    <header>
+      <h1 className="branding">
+        <Link to="/">
+          <span className="logo">{"//"}</span>
+          Proj<span className="logo">Extreme</span>
+        </Link>
       </h1>
       <nav>
-        <button onClick={toggle}>{theme ? "LightMode" : "DarkMode"}</button>
+        <div className="navigation">
+          <NavLink className="button" exact to="/">
+            Home
+          </NavLink>
+          <NavLink className="button" exact to="/projects">
+            All Projects
+          </NavLink>
+          <NavLink className="button" to="/projects/new">
+            Add Project
+          </NavLink>
+          <NavLink className="button" to="/about">
+            About
+          </NavLink>
+        </div>
       </nav>
-    </div>
+    </header>
   );
 }

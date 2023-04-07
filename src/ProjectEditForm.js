@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 
-function ProjectEditForm({ projectToEdit, onUpdateProject }) {
-  const [formData, setFormData] = useState(projectToEdit);
+function ProjectEditForm({ onUpdateProject }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    about: "",
+    phase: "",
+    link: "",
+    image: "",
+  });
 
   const { name, about, phase, link, image } = formData;
+
+  const { id } = useParams();
+  const history = useHistory();
 
   // refetch the projectToEdit from the database upon load
   // to ensure we have the most recent values for our formData
   useEffect(() => {
-    fetch(`http://localhost:3001/projects/${projectToEdit.id}`)
+    fetch(`http://localhost:3001/projects/${id}`)
       .then((response) => response.json())
       .then((project) => setFormData(project));
-  }, [projectToEdit.id]);
+  }, [id]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +31,7 @@ function ProjectEditForm({ projectToEdit, onUpdateProject }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/projects/${projectToEdit.id}`, {
+    fetch(`http://localhost:3001/projects/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +41,7 @@ function ProjectEditForm({ projectToEdit, onUpdateProject }) {
       .then((response) => response.json())
       .then((updatedProject) => onUpdateProject(updatedProject));
     // onUpdateProject(formData);
+    history.push(`/projects`);
   }
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function ProjectForm({ onAddProject }) {
   const initilaState = {
@@ -11,6 +11,8 @@ function ProjectForm({ onAddProject }) {
   };
 
   const [formData, setFormData] = React.useState(initilaState);
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ function ProjectForm({ onAddProject }) {
         onAddProject(data);
       });
     setFormData(initilaState);
+    history.push(`/projects`);
   };
 
   const handleChange = (e) => {

@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProjectList from "./ProjectList";
 import ProjectForm from "./ProjectForm";
@@ -8,7 +9,6 @@ const ProjectsContainer = () => {
   const [projects, setProjects] = useState([]);
   const [selectedPhase, setSelectedPhase] = useState("");
   const [search, setSearch] = useState("");
-  const [projectToEdit, setProjectToEdit] = useState(null);
 
   useEffect(() => {
     let url = "http://localhost:3001/projects";
@@ -31,7 +31,6 @@ const ProjectsContainer = () => {
   };
 
   const onUpdateProject = (updatedProject) => {
-    setProjectToEdit(null);
     setProjects((projects) => {
       return projects.map((originalProject) => {
         if (originalProject.id === updatedProject.id) {
@@ -43,42 +42,31 @@ const ProjectsContainer = () => {
     });
   };
 
-  const onEditProject = (projectToEdit) => {
-    setProjectToEdit(projectToEdit);
-  };
-
   const onDeleteProject = (projectId) => {
     setProjects((projects) =>
       projects.filter((project) => project.id !== projectId)
     );
   };
 
-  const renderForm = () => {
-    if (projectToEdit) {
-      return (
-        <ProjectEditForm
-          projectToEdit={projectToEdit}
-          onUpdateProject={onUpdateProject}
-        />
-      );
-    } else {
-      return <ProjectForm onAddProject={onAddProject} />;
-    }
-  };
-
   return (
-    <div>
-      {renderForm()}
-      <ProjectList
-        projects={projects}
-        setSelectedPhase={setSelectedPhase}
-        onEditProject={onEditProject}
-        onUpdateProject={onUpdateProject}
-        onDeleteProject={onDeleteProject}
-        search={search}
-        setSearch={setSearch}
-      />
-    </div>
+    <Switch>
+      <Route exact path="/projects">
+        <ProjectList
+          projects={projects}
+          setSelectedPhase={setSelectedPhase}
+          onUpdateProject={onUpdateProject}
+          onDeleteProject={onDeleteProject}
+          search={search}
+          setSearch={setSearch}
+        />
+      </Route>
+      <Route path="/projects/new">
+        <ProjectForm onAddProject={onAddProject} />
+      </Route>
+      <Route path="/projects/:id/edit">
+        <ProjectEditForm onUpdateProject={onUpdateProject} />
+      </Route>
+    </Switch>
   );
 };
 

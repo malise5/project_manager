@@ -1,18 +1,24 @@
 import Header from "./Header";
-import { useState } from "react";
+import { Route, Switch } from "react-router-dom";
 import ProjectsContainer from "./ProjectsContainer";
+import Home from "./Home";
+import About from "./About";
 
 export default function App() {
-  const [theme, setTheme] = useState(true);
-
-  const changeTheme = () => {
-    setTheme(!theme);
-  };
-
   return (
-    <div className={theme ? "App" : "App light"}>
-      <Header theme={theme} changeTheme={changeTheme} />
-      <ProjectsContainer />
+    <div className="App">
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/projects">
+          <ProjectsContainer />
+        </Route>
+      </Switch>
     </div>
   );
 }

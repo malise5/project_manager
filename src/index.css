@@ -48,7 +48,7 @@ section {
   align-items: center;
 }
 
-button {
+button,.button {
   margin-right: 20px;
   margin-bottom: 20px;
   padding: 0.5rem 0.75rem;
@@ -64,27 +64,35 @@ button {
 }
 button.active,
 button:focus,
-button:hover {
+button:hover,
+.button.active,
+.button:focus,
+.button:hover {
   outline: none;
   color: var(--background);
   background-color: var(--primary);
   border: 2px solid var(--primary);
 }
 
-button:disabled {
+button:disabled,
+.button:disabled {
   cursor: not-allowed;
   color: var(--dark-grey);
   background-color: var(--grey);
 }
 
-button.blue {
+button.blue,
+.button.blue {
   border: 2px solid var(--blue-dark);
   color: var(--blue);
 }
 
 button.blue.active,
 button.blue:focus,
-button.blue:hover {
+button.blue:hover,
+.button.blue.active,
+.button.blue:focus,
+.button.blue:hover  {
   color: var(--white);
   background-color: var(--blue);
   border: 2px solid var(--blue);
@@ -119,7 +127,7 @@ a:hover {
 }
 .logo {
   color: var(--turquoise);
-  font-size: 1.25em;
+  font-size: 1.2em;
   font-family: Helvetica;
   margin-right: 0.5rem;
 }
@@ -127,8 +135,10 @@ a:hover {
 nav {
   padding: 1rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-content: center;
+  
 }
 
 .navigation * {
@@ -213,7 +223,6 @@ select:focus {
     max-width: inherit;
   }
 }
-
 .card .image {
   max-height: 200px;
   overflow: hidden;
@@ -226,9 +235,18 @@ select:focus {
   object-fit: cover;
 }
 
+.card > a {
+  border-bottom: none;
+}
+
+.card > a:hover {
+  border-bottom: none;
+  background-color: transparent;
+}
+
 .card .image .claps {
   color: transparent;
-  text-shadow: 0 0 0 var(--turquoise);
+  text-shadow: 0 0 0 var(--primary);
   position: absolute;
   top: 10px;
   right: 10px;
@@ -237,7 +255,7 @@ select:focus {
 .card .image .claps:focus,
 .card .image .claps:hover {
   color: transparent;
-  text-shadow: 0 0 0 var(--color);
+  text-shadow: 0 0 0 var(--background);
 }
 
 .card .details {
@@ -252,18 +270,28 @@ select:focus {
   margin: 0.5rem 0;
 }
 
-.card .extra {
+.extra {
+  margin: 0.5rem;
   margin-top: auto;
   display: flex;
   justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.manage{
+  margin-top: 20px;
+}
+
+
+.manage .button, .manage button {
+  margin-left: 0.25em;
 }
 
 .badge {
-  display: flex;
-  align-items: center;
-  padding: 1.2rem;
+  display: inline-block;
+  padding: 0.5rem ;
   border-radius: 4px;
-  margin: 0.5rem;
+  margin: 0.25rem;
 }
 
 .badge.blue {
@@ -271,9 +299,90 @@ select:focus {
   border: 2px solid var(--blue-dark);
   color: var(--white);
 }
-.card .manage {
-  display: flex;
-  justify-content: end;
-  margin: 0.5rem;
-  gap: 0.25rem;
+
+.box {
+  height: 100vh;
+  border: 2px solid var(--dark-turquoise);
+  padding: 1.75rem;
 }
+
+.navigation * {
+  margin: 0 0.5rem;
+}
+
+.branding {
+  display: flex;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border-bottom: 1px solid #00efe1;
+  
+}
+
+header h1 a {
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+}
+
+header h1 a:hover {
+  border-bottom: none;
+  background-color: transparent;
+}
+
+.logo {
+  color: var(--turquoise);
+  font-size: 1.25em;
+  font-family: Helvetica;
+  margin-right: 0.5rem;
+}
+
+.project-image img {
+  width: 100%;
+  max-width: 1000px;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.project-detail{
+  background-color: white;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.home-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.home-description {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 800px;
+}
+
+.home-button {
+  background-color: #0077FF;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+

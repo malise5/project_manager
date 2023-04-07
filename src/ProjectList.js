@@ -6,7 +6,6 @@ export default function ProjectList({
   setSelectedPhase,
   search,
   setSearch,
-  onEditProject,
   onDeleteProject,
   onUpdateProject,
 }) {
@@ -37,7 +36,6 @@ export default function ProjectList({
       <ProjectCard
         key={project.id}
         project={project}
-        onEditProject={onEditProject}
         onUpdateProject={onUpdateProject}
         onDeleteProject={onDeleteProject}
       />

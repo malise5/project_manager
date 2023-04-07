@@ -7,7 +7,7 @@
       "phase": 4,
       "link": "https://great-outdoors-guide.netlify.app",
       "image": "https://imgv3.fotor.com/images/blog-cover-image/part-blurry-image.jpg",
-      "claps": 1
+      "claps": 2
     },
     {
       "id": 2,
@@ -29,7 +29,7 @@
     },
     {
       "id": 11,
-      "name": "Yourseum",
+      "name": "YourSeum",
       "about": "Find great art",
       "phase": 4,
       "link": "https://yourseum.netlify.app",
@@ -88,7 +88,32 @@
       "phase": 4,
       "link": "https://www.locksleyr.com",
       "image": "https://helpdesk.bitrix24.com/upload/medialibrary/fa8/lx314x81vqdgdjdlfk7j5fh8xejwfgh2/knowledge_base.jpg",
-      "claps": 0
+      "claps": 1
+    },
+    {
+      "name": "Real-Estate",
+      "about": "A real estate app that showcases houses and allows you to view their plans",
+      "phase": "2",
+      "link": "https://real-estate-f3f47.web.app/",
+      "image": "https://gordcollins.com/wp-content/uploads/2021/08/tarek-buys-houses.jpg",
+      "id": 25,
+      "claps": 2
+    },
+    {
+      "name": "asndklads",
+      "about": "sadcsDc",
+      "phase": "3",
+      "link": "asaSD",
+      "image": "asdas",
+      "id": 26
+    },
+    {
+      "name": "asfsdf",
+      "about": "svczxcv",
+      "phase": "1",
+      "link": "zxczxc",
+      "image": "zxczxc",
+      "id": 27
     }
   ]
 }
